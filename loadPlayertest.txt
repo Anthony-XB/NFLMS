@@ -1,0 +1,2 @@
+J.Allen,QB,BUF,PassingYards:4100,PassingTouchdowns:35,Interceptions:0.0
+C.McCaffrey,RB,SF,RushingYards:1200.0,RushingTouchdowns:12.0,Receptions:75.0

@@ -33,6 +33,12 @@ public class PlayerService {
 
 
                         switch (statKey) {
+                            case "PassingAttempts":
+                                stats.setPassingAttempts(statValue);
+                                break;
+                            case "PassingCompletions":
+                                stats.setPassingCompletions(statValue);
+                                break;
                             case "PassingYards":
                                 stats.setPassingYards(statValue);
                                 break;
@@ -92,15 +98,24 @@ public class PlayerService {
 
                 switch (player.getPosition()) {
                     case "QB":
-                        playerData += ",PassingYards:" + stats.getPassingYards()
+                        playerData += ",PassingAttempts:" + stats.getPassingAttempts()
+                                + ",PassingCompletions:" + stats.getPassingCompletions()
+                                + ",PassingYards:" + stats.getPassingYards()
                                 + ",PassingTouchdowns:" + stats.getPassingTouchdowns()
-                                + ",Interceptions:" + stats.getInterceptions();
+                                + ",Interceptions:" + stats.getInterceptions()
+                                + ",RushingAttempts:" + stats.getRushingAttempts()
+                                + ",RushingYards:" + stats.getRushingYards()
+                                + ",RushingTouchdowns:" + stats.getRushingTouchdowns();
                         break;
                     case "RB":
-                        playerData += ",RushingYards:" + stats.getRushingYards()
+                        playerData += ",RushingAttempts:" + stats.getRushingAttempts()
+                                + ",RushingYards:" + stats.getRushingYards()
                                 + ",RushingTouchdowns:" + stats.getRushingTouchdowns()
-                                + ",Receptions:" + stats.getReceptions();
+                                + ",Receptions:" + stats.getReceptions()
+                                + ",ReceivingYards:" + stats.getReceivingYards()
+                                + ",ReceivingTouchdowns:" + stats.getReceivingTouchdowns();
                         break;
+
                     case "WR":
                     case "TE":
                         playerData += ",ReceivingYards:" + stats.getReceivingYards()
@@ -130,18 +145,106 @@ public class PlayerService {
     }
 
 
-    public void addPlayer(Player player) {
-        players.add(player);
-        System.out.println(player.getName() + " has been added to the list.");
+    public void addPlayer(String fileName, Player player) {
+
+        StringBuilder playerData = new StringBuilder();
+        playerData.append(player.getName()).append(",")
+                .append(player.getPosition()).append(",")
+                .append(player.getTeam());
+
+
+        Stats stats = player.getStats();
+        switch (player.getPosition()) {
+            case "QB":
+                playerData.append(",PassingAttempts:").append(stats.getPassingAttempts())
+                        .append(",PassingCompletions:").append(stats.getPassingCompletions())
+                        .append(",PassingYards:").append(stats.getPassingYards())
+                        .append(",PassingTouchdowns:").append(stats.getPassingTouchdowns())
+                        .append(",Interceptions:").append(stats.getInterceptions());
+                break;
+            case "RB":
+                playerData.append(",RushingAttempts:").append(stats.getRushingAttempts())
+                        .append(",RushingYards:").append(stats.getRushingYards())
+                        .append(",RushingTouchdowns:").append(stats.getRushingTouchdowns())
+                        .append(",Receptions:").append(stats.getReceptions());
+                break;
+            case "WR":
+            case "TE":
+                playerData.append(",ReceivingYards:").append(stats.getReceivingYards())
+                        .append(",ReceivingTouchdowns:").append(stats.getReceivingTouchdowns())
+                        .append(",Receptions:").append(stats.getReceptions());
+                break;
+            case "K":
+                playerData.append(",FieldGoalsMade:").append(stats.getFieldGoalsMade())
+                        .append(",ExtraPointsMade:").append(stats.getExtraPointsMade())
+                        .append(",FieldGoalPercentage:").append(stats.getFieldGoalPercentage());
+                break;
+
+        }
+
+        // Append the new player's data to the file
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) { // 'true' to append
+            writer.write(playerData.toString());
+            writer.newLine(); // Write the player data followed by a new line
+            System.out.println(player.getName() + " has been added to the list."); // Optional confirmation message
+        } catch (IOException e) {
+            System.out.println("Error saving player to file: " + e.getMessage());
+        }
+
+        loadPlayersFromFile(fileName);
+
     }
 
-    public void removePlayer(String playerName) {
-        boolean removed = players.removeIf(player -> player.getName().equalsIgnoreCase(playerName));
-        if (removed) {
-            System.out.println(playerName + " has been removed from the list.");
-        } else {
-            System.out.println(playerName + " was not found in the list.");
+
+
+    public void removePlayer(String fileName, String playerName) {
+
+
+        List<Player> playersToKeep = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] playerData = line.split(",");
+                String name = playerData[0].trim();
+                Player player = new Player(name, playerData[1].trim(), playerData[2].trim());
+
+                if (!name.equalsIgnoreCase(playerName)) {
+                    playersToKeep.add(player);
+                } else {
+                    System.out.println("Removing player: " + name);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading players from file: " + e.getMessage());
+            return;
         }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (Player player : playersToKeep) {
+                writer.write(player.getName() + "," + player.getPosition() + "," + player.getTeam());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error writing players to file: " + e.getMessage());
+        }
+
+        loadPlayersFromFile(fileName);
+    }
+
+
+
+
+
+
+    public List<Stats> getStats(String playerName){
+        List<Stats> statList = new ArrayList<>();
+
+        Optional<Player> player = getPlayerByName(playerName);
+
+        player.ifPresent(p -> statList.add(p.getStats()));
+
+        return statList;
     }
 
     public List<Stats> getPlayersStatsForComparison(String player1Name, String player2Name) {

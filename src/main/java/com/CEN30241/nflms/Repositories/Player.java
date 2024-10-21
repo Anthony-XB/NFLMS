@@ -12,13 +12,6 @@ public class Player {
     private String team;
     private Stats stats;
 
-    public Player(String name, String position, String team, Stats stats) {
-        this.name = name;
-        this.position = position;
-        this.team = team;
-        this.stats = stats;
-    }
-
 
     public Player(String name, String position, String team) {
         this.name = name;
