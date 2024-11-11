@@ -1,3 +1,7 @@
 J.Fields,QB,PIT
 J.Fields,QB,PIT
-AD.Mitchell,WR,IND,ReceivingYards:300.0,ReceivingTouchdowns:2.0,Receptions:33.0
+AD.Mitchell,WR,IND
+J.Metchi,WR,HOU
+T.Hill,TE,NO
+J.Dash,Wr,IND
+J.Dash,Wr,IND

@@ -1,13 +1,17 @@
 package com.CEN30241.nflms;
 
 import com.CEN30241.nflms.Controllers.Menu;
-import javafx.application.Application;
+
+
+import javax.swing.*;
 
 
 public class NFLApp {
 
     public static void main(String[] args) {
-       Application.launch(Menu.class,args);
+        SwingUtilities.invokeLater(() -> {
+            Menu menu = new Menu();
+            menu.showMainMenu();
+        });
     }
-
 }

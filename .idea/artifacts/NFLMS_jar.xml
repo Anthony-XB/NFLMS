@@ -3,17 +3,33 @@
     <output-path>$PROJECT_DIR$/out/artifacts/NFLMS_jar</output-path>
     <root id="archive" name="NFLMS.jar">
       <element id="module-output" name="NFLMS" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19.0.2/javafx-controls-19.0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/23.0.1/javafx-graphics-23.0.1-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.13.3/jackson-databind-2.13.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/23.0.1/javafx-fxml-23.0.1-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/13.0.2/javafx-controls-13.0.2-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-media/21.0.2/javafx-media-21.0.2-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-media/21.0.2/javafx-media-21.0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/13.0.2/javafx-controls-13.0.2.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/kordamp/bootstrapfx/bootstrapfx-core/0.4.0/bootstrapfx-core-0.4.0.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19.0.2/javafx-base-19.0.2-win.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19.0.2/javafx-base-19.0.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19.0.2/javafx-fxml-19.0.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19.0.2/javafx-fxml-19.0.2-win.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/controlsfx/controlsfx/11.1.2/controlsfx-11.1.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19.0.2/javafx-graphics-19.0.2.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19.0.2/javafx-controls-19.0.2-win.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19.0.2/javafx-graphics-19.0.2-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/23.0.1/javafx-base-23.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/23.0.1/javafx-fxml-23.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.18.1/jackson-core-2.18.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.13.3/jackson-annotations-2.13.3.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/dlsc/formsfx/formsfx-core/11.6.0/formsfx-core-11.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/23.0.1/javafx-base-23.0.1-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar" path-in-jar="/" />
+      <element id="library" level="project" name="NFLMS" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/23.0.1/javafx-graphics-23.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../javafx-sdk-23/lib/javafx-swt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../javafx-sdk-23/lib/javafx.base.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../javafx-sdk-23/lib/javafx.controls.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../javafx-sdk-23/lib/javafx.fxml.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../javafx-sdk-23/lib/javafx.graphics.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../javafx-sdk-23/lib/javafx.web.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../javafx-sdk-23/lib/javafx.swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../../javafx-sdk-23/lib/javafx.media.jar" path-in-jar="/" />
+      <element id="dir-copy" path="$PROJECT_DIR$" />
     </root>
   </artifact>
 </component>

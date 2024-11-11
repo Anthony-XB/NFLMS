@@ -1,13 +1,30 @@
-module com.example.nflms {
-    requires javafx.controls;
-    requires javafx.fxml;
-    requires javafx.graphics;
+module NFLMS {
+
+//    module com.CEN30241.nflms {
+
     requires static lombok;
+    requires java.desktop;
 
 
-    // Open the package containing Menu to allow JavaFX reflection access
-    opens com.CEN30241.nflms.Controllers to javafx.graphics, javafx.fxml;
+    requires java.sql;
+    requires com.fasterxml.jackson.databind;
+//    requires javafx.graphics;
+//    requires javafx.controls;
+//    requires javafx.fxml;
+//    requires javafx.base;
 
-    // Export the main package
+
+    exports com.CEN30241.nflms.Controllers;
+
+
+    opens com.CEN30241.nflms.Controllers to javafx.fxml;
+
+
+    opens com.CEN30241.nflms to javafx.fxml;
+
+
     exports com.CEN30241.nflms;
+
 }
+
+//}
