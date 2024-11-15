@@ -1,0 +1,5 @@
+module:NFLMS
+com.CEN30241.nflms
+com.CEN30241.nflms.Controllers
+com.CEN30241.nflms.Repositories
+com.CEN30241.nflms.service

@@ -12,15 +12,19 @@ import java.util.Optional;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
-
+/**
+ * The PlayerService class provides methods for managing players and their statistics
+ * within a database, including retrieving, adding, and removing players.
+ */
 public class PlayerService {
 
     private List<Player> players = new ArrayList<>();
 
-
-
-
-
+    /**
+     * Retrieves all players from the database.
+     *
+     * @return a list of {@link Player} objects retrieved from the database.
+     */
         public List<Player> getAllPlayersFromDatabase() {
             List<Player> players = new ArrayList<>();
             String query = "SELECT * FROM players";
@@ -48,7 +52,11 @@ public class PlayerService {
 
 
 
-
+    /**
+     * Adds a player to the database.
+     *
+     * @param player the {@link Player} object to add to the database.
+     */
         public void addPlayerToDatabase(Player player) {
             String query = "INSERT INTO players (name, position, team, stats) VALUES (?, ?, ?, ?)";
 
@@ -69,6 +77,12 @@ public class PlayerService {
             }
         }
 
+    /**
+     * Removes a player from the database.
+     *
+     * @param playerName the name of the player to remove.
+     * @return {@code true} if the player was successfully removed; {@code false} otherwise.
+     */
         public boolean removePlayerFromDatabase(String playerName) {
             String query = "DELETE FROM players WHERE name = ?";
 
@@ -90,7 +104,12 @@ public class PlayerService {
             return false;
         }
 
-
+    /**
+     * Retrieves a player by their name.
+     *
+     * @param name the name of the player to retrieve.
+     * @return an {@link Optional} containing the {@link Player} if found; otherwise, {@code Optional.empty()}.
+     */
         public Optional<Player> getPlayerByName(String name) {
             String query = "SELECT * FROM players WHERE name = ?";
             try (Connection connection = DatabaseConnection.getConnection();
@@ -116,10 +135,12 @@ public class PlayerService {
         }
 
 
-
-
-
-
+    /**
+     * Retrieves the statistics for a given player by their name.
+     *
+     * @param playerName the name of the player.
+     * @return a list of {@link Stats} objects for the player.
+     */
         public List<Stats> getStats(String playerName) {
             List<Stats> statList = new ArrayList<>();
             String query = "SELECT stats FROM players WHERE name = ?";
@@ -144,6 +165,13 @@ public class PlayerService {
             return statList;
         }
 
+    /**
+     * Retrieves the statistics for two players by their names for comparison.
+     *
+     * @param player1Name the name of the first player.
+     * @param player2Name the name of the second player.
+     * @return a list of {@link Stats} objects for the players.
+     */
     public List<Stats> getPlayersStatsForComparison(String player1Name, String player2Name) {
         List<Stats> statsList = new ArrayList<>();
 
@@ -204,6 +232,10 @@ public class PlayerService {
 
         return statsList;
     }
+
+    /**
+     * The DatabaseConnection class manages connections to the database.
+     */
     public class DatabaseConnection {
         private static String URL;
         private static String USER;
@@ -222,9 +254,14 @@ public class PlayerService {
             }
         }
 
+        /**
+         * Retrieves a connection to the database.
+         *
+         * @return a {@link Connection} object to the database.
+         * @throws SQLException if a database access error occurs.
+         */
         public static Connection getConnection() throws SQLException {
             return DriverManager.getConnection(URL, USER, PASSWORD);
         }
     }
-
 }

@@ -13,6 +13,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Menu Class provides a GUI for managing NFL players, including adding, viewing,
+ * comparing stats, and removing players *
+ */
 public class Menu {
 
     private PlayerService playerService = new PlayerService();
@@ -25,6 +29,9 @@ public class Menu {
     private JPanel mainPanel;
     private CardLayout cardLayout;
 
+    /**
+     * Constructor that initializes the main JFrame and sets up the main menu.
+     */
     public Menu() {
         frame = new JFrame("Player Manager");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,6 +50,11 @@ public class Menu {
         showMainMenu();
     }
 
+    /**
+     * Creates the main menu panel with buttons for navigating to other sections.
+     *
+     * @return JPanel representing the main menu
+     */
     private JPanel createMainMenu() {
         JPanel panel = new JPanel(new GridLayout(0, 1, 10, 10));
 
@@ -73,6 +85,11 @@ public class Menu {
         return panel;
     }
 
+    /**
+     * Creates the panel for adding aplayer, including input fields for players details and stats.
+     *
+     * @return JPanel representing the add player panel.
+     */
     private JPanel createAddPlayerPanel() {
         JPanel panel = new JPanel(new GridLayout(0, 1, 10, 10));
 
@@ -122,7 +139,11 @@ public class Menu {
 
         return panel;
     }
-
+    /**
+     * Creates the panel for viewing all players.
+     *
+     * @return JPanel representing the View Players panel.
+     */
     private JPanel createViewPlayersPanel() {
         JPanel panel = new JPanel(new BorderLayout());
         playerDetails = new JLabel();
@@ -135,6 +156,11 @@ public class Menu {
         return panel;
     }
 
+    /**
+     * Creates the panel for comparing stats between two players.
+     *
+     * @return JPanel representing the Compare Stats panel.
+     */
     private JPanel createCompareStatsPanel() {
         JPanel panel = new JPanel(new GridLayout(0, 1, 10, 10));
 
@@ -157,10 +183,16 @@ public class Menu {
         return panel;
     }
 
+    /**
+     * Shows the main menu by setting the main panel to display the "Main Menu" card.
+     */
     public void showMainMenu() {
         cardLayout.show(mainPanel, "Main Menu");
     }
 
+    /**
+     * Shows the main menu by setting the main panel to display the "Main Menu" card.
+     */
     private void comparePlayerStats() {
         String player1Name = player1Input.getText().trim().toLowerCase();
         String player2Name = player2Input.getText().trim().toLowerCase();
@@ -202,6 +234,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Adds a player to the database based on input fields for name, position, team, and stats.
+     */
     private void addPlayer() {
         String name = playerInput.getText().trim();
         String position = positionInput.getText().trim();
@@ -256,6 +291,12 @@ public class Menu {
         }
     }
 
+    /**
+     * Removes a player from the database.
+     *
+     * @param playerName the name of the player to be removed.
+     * @return {@code true} if the player was removed successfully; {@code false} otherwise.
+     */
     public boolean removePlayerFromDatabase(String playerName) {
         String query = "DELETE FROM players WHERE name = ?";
 
@@ -272,6 +313,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Removes a player based on the input field and updates the result label.
+     */
     private void removePlayer() {
         String name = removePlayerInput.getText().trim();
 
@@ -292,6 +336,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Retrieves all players from the database and displays them in the player details label.
+     */
     private void viewPlayers() {
         List<Player> players = playerService.getAllPlayersFromDatabase();
         if (players.isEmpty()) {
