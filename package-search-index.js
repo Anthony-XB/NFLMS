@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"NFLMS","l":"com.CEN30241.nflms"},{"m":"NFLMS","l":"com.CEN30241.nflms.Controllers"},{"m":"NFLMS","l":"com.CEN30241.nflms.Repositories"},{"m":"NFLMS","l":"com.CEN30241.nflms.service"}];updateSearchResults();
